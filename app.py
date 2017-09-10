@@ -64,7 +64,7 @@ class PlayerForm(Form):
 def set_asset(id):
     if request.method == 'POST':
         username = request.form['username']
-        print username
+        print (username)
       #  payload = {"name":str(username)}
         api_mod = api.OoyalaAPI(api_key,secrete)
         test = api_mod.patch('assets/' + id,{'name':username})
@@ -80,7 +80,7 @@ def set_asset(id):
 def disable_player_email(id):
     api_mod = api.OoyalaAPI(api_key, secrete)
     test = api_mod.patch('players/' + id,{ "ooyala_branding": {"twitter_sharing": "false"}})
-    print str(test)
+    print (str(test))
     get_sig = sig_generator()
     params = {'api_key': api_key, 'expires': expires_t}
     sig = get_sig.generate_signature(secrete, 'get', '/v2/players/', params,
@@ -96,7 +96,7 @@ def disable_player_email(id):
 def enable_player_email(id):
         api_mod = api.OoyalaAPI(api_key,secrete)
         test = api_mod.patch('players/' + id,{ "ooyala_branding": {"twitter_sharing": "true"}})
-        print str(test)
+        print (str(test))
         get_sig = sig_generator()
         params = {'api_key': api_key, 'expires': expires_t}
         sig = get_sig.generate_signature(secrete, 'get', '/v2/players/', params,                                         '')
@@ -111,7 +111,7 @@ def enable_player_email(id):
 def set_player(id):
     if request.method == 'POST':
         username = request.form['username']
-        print username
+        print (username)
       #  payload = {"name":str(username)}
         api_mod = api.OoyalaAPI(api_key,secrete)
         test = api_mod.patch('players/' + id,{'name':username})
@@ -150,7 +150,7 @@ class sig_generator(object):
             signature += key + '=' + value
         signature = signature.encode('ascii')
         signature += request_body
-        print signature
+        print (signature)
         signature = base64.b64encode(hashlib.sha256(signature).digest())[0:43]
         signature = urllib.quote_plus(signature)
         return signature
