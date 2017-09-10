@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+<p style="text-align: center;"><strong>Welcme to phase 3 :</strong></p>
+<p style="text-align: center;">&nbsp;</p>
+<ul style="list-style-type: circle;">
+<li style="text-align: left;">This page can fetch the entities like exiting players, users, assets and displays some important information</li>
+<li style="text-align: left;">You can edit the names of a specific player, Asset</li>
+<li style="text-align: left;">It is also possible to either show or hide the 'Email share' icon in share UI component </li>
+<li style="text-align: left;">To fecth and parse ('GET') I've used 'requests' module in python (including genating signiture)</li>
+<li style="text-align: left;">For updating properties I've used ('PATCH') I've used OOyala API (has issues with generating signiture, even after usinf correct format for HMAC conversion given in the Help center)</li>
+</ul>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+{% endblock %}

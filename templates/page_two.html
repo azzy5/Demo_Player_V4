@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Page Two </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='style.css' )}}/>
+    <!-- This embed code automatically includes and packages standard Player V4 plugins. If you need a different mix of plugins, please use the Advanced embed option. To see the included plugins, please refer to this doc: http://help.ooyala.com/video-platform/concepts/pbv4_release_notes.html -->
+    <script src="//player.ooyala.com/core/ba830aae2b4b450abcf64372b25bcb9c"></script>
+    <!-- The following div will contain the instantiated player, and is identified by id -->
+    <!-- Player parameter modify some basic player behaviors and looks -->
+    <script>
+        var playerParam = {
+            'autoplay': false,
+            'loop': false
+        };
+        OO.ready(function () {
+            window.pp = OO.Player.create('container', 'FzcjloYzE6YKUMVlFG7GPtY1de1R1ErP', playerParam);
+        });
+    </script>
+
+
+</head>
+<body>
+<text style="color:#ffbb00;">
+    <center>
+        <h1> Page Two </h1>
+    </center>
+    </h1>
+    <table width="100%">
+        <tbody>
+        <tr>
+            <td style="width: 50%;height:100%">
+                <div id='container' style="height:480px;width:640px; margin:auto;"></div>
+            </td>
+            <td style="height:100%;width:100%; margin:auto; position:absolute;color:#ffbb00;">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Add a thumbnail from a second video : -&nbsp;<img
+                                        src="../static/rsz_if_f-check_256_282474.png" alt="" width="30" height="23"/>
+                                </li>
+                                <li>when clicking the thumbnail the second video must start ) -&nbsp;</li>
+                                <li>Modify at least 3 of the Player UI components (color, position, etc) : -&nbsp;<img
+                                        src="../static/rsz_if_f-check_256_282474.png" alt="" width="30" height="23"/>
+                                </li>
+                                <li><a href="/phaseone">
+                                    <button class="pulse"><< Page One</button>
+                                </a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><h3 style="color:#ffbb00; size:30px;"> Contents : </h3>
+                            <img id="img_button" class="pulse"
+                                 src="http://cf.c.ooyala.com/BpcDloYzE6Z95pWuvd3wG8qnTHnkluHU/Vx8lr-LI9TPdNKgn4xMDoxOjBrO-I4W8"
+                                 height="200" width="250px"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        var img_button = document.getElementById("img_button");
+        img_button.addEventListener('click', clicked);
+
+        function clicked() {
+            if (window.pp.isPlaying())
+                window.pp.pause();
+            else
+                window.pp.play();
+
+        }
+    </script>
+</body>
+</html>

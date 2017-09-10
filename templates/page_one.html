@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Page One </title>
+  <meta charset="utf-8">
+ <!-- This embed code automatically includes and packages standard Player V4 plugins. If you need a different mix of plugins, please use the Advanced embed option. To see the included plugins, please refer to this doc: http://help.ooyala.com/video-platform/concepts/pbv4_release_notes.html -->
+<!-- This embed code automatically includes and packages standard Player V4 plugins. If you need a different mix of plugins, please use the Advanced embed option. To see the included plugins, please refer to this doc: http://help.ooyala.com/video-platform/concepts/pbv4_release_notes.html -->
+<script src="//player.ooyala.com/core/2ad62674f94a4b198bea5d468434c2ff"></script>
+<!-- The following div will contain the instantiated player, and is identified by id -->
+
+<!-- Player parameter modify some basic player behaviors and looks -->
+<script>
+  var playerParam = {
+    'autoplay':true,
+    'loop':false
+  };	
+  OO.ready(function() {window.pp = OO.Player.create('container', 'BpcDloYzE6Z95pWuvd3wG8qnTHnkluHU', playerParam);});
+</script>
+
+  <link rel="stylesheet" type="text/css" href={{url_for('static', filename='style.css')}}/>
+  
+</head>
+
+<body style="height: 100%; width: 100%;color: #fff; background: #17181c; font: 300 1em 'Fira Sans', sans-serif;">
+<text style="color:#ff1493;"> <center><h1>Page One </h1></center></h1>
+<table width="100%">
+<tbody>
+<tr>
+<td style="width: 60%;height:100%">
+<div id='container' style="height:100%;width:100%; margin:auto;"></div>
+<div style="margin-top:10px;"> 
+<center>
+	<button id="playButton" class="pulse" style="height: 60px; width: 100px;">Pause</button>
+	<button id="playButton2" class="pulse" style="height: 60px; width: 90px;">Play</button>
+	<button id="playButton3" class="pulse" style="height: 60px; width: 150px;">Volume Up</button>
+	<button id="playButton4" class="pulse" style="height: 60px; width: 170px;">Volume Down</button>
+</center>
+</div> </td>
+
+<td style="height:100%;width:100%; margin:auto; position:absolute; color:#ff1493;">
+<ul>
+<li>Auto play -&nbsp;<img src="../static/rsz_if_f-check_256_282474.png" alt="" width="30" height="23" /></li>
+<li>Chromeless (control bar auto hide) -&nbsp; <img src="../static/rsz_if_f-check_256_282474.png" alt="" width="30" height="23" /></li>
+<li>Play, Pause and volume control buttons -&nbsp;<img src="../static/rsz_if_f-check_256_282474.png" alt="" width="30" height="23" /></li>
+<li> <a href="\pagetwo"> <button class="pulse">Page two >></button></a></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+
+	<script>
+		var volume;
+		var button0 = document.getElementById('playButton');
+		button0.addEventListener('click', pause);
+		var button1 = document.getElementById('playButton2');
+		button1.addEventListener('click', play);
+		var buttons2 = document.getElementById('playButton3');
+		buttons2.addEventListener('click', vUp);
+		var buttons3 = document.getElementById('playButton4');
+		buttons3.addEventListener('click', vDown);
+		function play(){
+			window.pp.play();
+		}
+		function pause(){
+		if(window.pp.isPlaying())
+			window.pp.pause();
+		}
+		function vUp(){
+		volume = window.pp.getVolume();
+		if(volume < 1.0)
+			window.pp.setVolume(volume+0.10);
+		console.log(window.pp.getVolume());
+		}
+		function vDown(){
+			volume = window.pp.getVolume();
+		if(volume > 0)
+			window.pp.setVolume(volume-0.10);
+		console.log(window.pp.getVolume());
+		}
+	</script>
+</body>
+</html>

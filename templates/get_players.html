@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+{% block body %}
+<table class="table">
+    <caption>
+
+    </caption>
+    <tr>
+        <th>ID</th>
+        <th>name</th>
+        <th>is default</th>
+        <th>Accent color</th>
+        <th>Email sharing</th>
+        <th>Action</th>
+        <th>Twitter sharing</th>
+    </tr>
+    <tr>
+    {% for items in player_json['items'] %}
+
+      <tr>
+        <td>{{items['id']}}</td>
+        <td>{{items['name']}}</td>
+        <td>{{items['is_default']}}</td>
+        <td >{{items['ooyala_branding']['accent_color']}}</td>
+        <td>{{items['ooyala_branding']['email_sharing']}}</td>
+        <td><a href="/get_players/{{items['id']}}" class="btn btn-danger ">Edit</a></td>
+        <td><a href="/enable_player_email/{{items['id']}}" class="btn btn-success  pull-left">Enable</a>&nbsp;&nbsp;
+        <a href="/disable_player_email/{{items['id']}}" class="btn btn-warning ">Disable</a></td>
+
+
+      </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

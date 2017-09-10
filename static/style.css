@@ -1,0 +1,56 @@
+
+.pulse:hover,
+.pulse:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em rgba(255, 255, 255, 0); }
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover); } }
+.close:hover,
+.close:focus {
+  box-shadow: inset -3.5em 0 0 0 var(--hover), inset 3.5em 0 0 0 var(--hover); }
+.pulse {
+  --color: #ef8f6e;
+  --hover: #ef6eae; }
+
+button {
+  color: var(--color);
+  transition: 0.25s; }
+  button:hover, button:focus {
+    border-color: var(--hover);
+    color: #fff; }
+
+debug{
+margin:8px; 
+width: 542px; 
+height: 500px;
+background:#ACCFC0;
+}	
+button {
+  background: none;
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.2em;
+
+  padding: 0.5em 2em; }
+ img {
+  background: none;
+  padding: 0.5em 2em; }
+code{
+}
+
+h1 {
+  font-weight: 400; }
+
+body, html {width: 100%; height: 100%; margin: 0; padding: 0;
+  color: #fff;
+  background: #17181c;
+  font: 300 1em 'Fira Sans', sans-serif;
+}
+.first-row {position: absolute;top: 0; left: 0; right: 0; height: 100px; background-color: lime;}
+.second-row {position: absolute; top: 100px; left: 0; right: 0; bottom: 0; background-color: red }
+.second-row iframe {display: block; width: 100%; height: 100%; border: none;}
+
+

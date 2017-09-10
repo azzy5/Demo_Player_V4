@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Demo Player V4 Ooyala - Shaik Azhar Ahmed </title>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='style.css')}}/>
+    <!-- Include plugins necessary for player -->
+    <!-- core provides basic player support-->
+    <script src="//player.ooyala.com/static/v4/production/core.min.js"></script>
+    <!-- bit_wrapper supports HLS-everywhere and Dash support -->
+    <script src="//player.ooyala.com/static/v4/production/video-plugin/bit_wrapper.min.js"></script>
+    <!-- main_html5 support browser supported video formats -->
+    <script src="//player.ooyala.com/static/v4/production/video-plugin/main_html5.min.js"></script>
+    <!-- osmf_flash supports Flash based video playback using Adobe's OSMF library -->
+    <script src="//player.ooyala.com/static/v4/production/video-plugin/osmf_flash.min.js"></script>
+    <!-- For HD2 stream format playback-->
+    <script src="//player.ooyala.com/static/v4/production/video-plugin/akamaiHD_flash.min.js"></script>
+    <!-- For using YouTube player for playback-->
+    <script src="//player.ooyala.com/static/v4/production/video-plugin/youtube.min.js"></script>
+    <!-- html5-skin supports the basic player UI -->
+    <!-- Player UI Definitions-->
+    <script src="//player.ooyala.com/static/v4/production/skin-plugin/html5-skin.min.js"></script>
+    <!-- Include the style sheet used by the player -->
+    <link rel="stylesheet" href="//player.ooyala.com/static/v4/production/skin-plugin/html5-skin.min.css"/>
+
+    <script>
+
+    </script>
+
+</head>
+<body >
+<center><h1 style="color:#ffcc00;"> Welcome to phase two</h1></center>
+<center>
+<table style="height: 100%; width: 100%" >
+    <tbody>
+    <tr>
+        <td style="height:100%; width:60%;">
+            <div id='container' height="100%" width="100%"></div>
+        </td>
+        <td style="color:#fcff15; width: 40%;">
+            <div id="img_t" style="display:none;">
+                <img src= "{{url_for('static', filename='closing.jpg')}}"/>
+            </div>
+            <div id="td_h">
+                <p id="video_status">77</p>
+                <p id="video_buffer">88</p>
+                <p id="volume_change">Volume not changed yet </p>
+                <p id="c_duration"></p>
+                <p id="c_error">Errors : no errors yet!</p>
+                <p style="color:#FFF;size:120px">watch till the end!</p>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</center>
+<!-- The following div will contain the instantiated player, and is identified by id -->
+<script>
+    function onCreate(player) {
+
+
+        player.mb.subscribe("*", 'example', function (eventName) {
+            var vstatus = document.getElementById("video_status");
+            var vBuffer = document.getElementById("video_buffer");
+            var volume = document.getElementById("volume_change");
+            var c_duration = document.getElementById("c_duration");
+            var c_error = document.getElementById("c_error");
+            console.log(eventName);
+            switch (eventName) {
+                case OO.EVENTS.PLAY:
+                    vstatus.innerHTML = "Content status : Playing";
+                    break;
+                case OO.EVENTS.PAUSED:
+                    vstatus.innerHTML = "Content status : Paused";
+                    break;
+                case OO.EVENTS.BUFFERING:
+                    vBuffer.innerHTML = "Buffer status : Buffering";
+                    break;
+                case OO.EVENTS.BUFFERED:
+                    document.getElementById("img_t").style.display = "none";
+                    vBuffer.innerHTML = "Buffer status : Buffer complete";
+                    break;
+                case OO.EVENTS.VOLUME_CHANGED:
+                    volume.innerHTML = "Volume Changed, current volume :" + (window.pp.getVolume() * 100) + "%";
+                    break;
+                case OO.EVENTS.PLAYHEAD_TIME_CHANGED:
+                    c_duration.innerHTML = "Playhead time  :" + window.pp.getPlayheadTime() + ", remaining time : " + (window.pp.getDuration() - window.pp.getPlayheadTime());
+                    if ((window.pp.getDuration() - window.pp.getPlayheadTime()) < 0) {
+                        document.getElementById("img_t").style.display = "block";
+                    }
+                    break;
+                case OO.EVENTS.ERROR:
+                    c_error.innerHTML = "Error : Error has occured";
+                    break;
+            }
+
+        });
+    }
+
+    var playerParam = {
+        'pcode': 'x2aGsyOtOUr3wnSDeUmqAShOpzFX',
+        'playerBrandingId': 'fc17aece88e44b96a037ee7ab87fcf06',
+        'autoplay': true,
+        'loop': false,
+        skin: {
+            config: "config/skin3.json",
+        },
+        onCreate: window.onCreate
+    };
+    OO.ready(function () {
+        window.pp = OO.Player.create('container', 'BpcDloYzE6Z95pWuvd3wG8qnTHnkluHU', playerParam);
+    });
+
+
+</script>
+
+</body>
+</html>

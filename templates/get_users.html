@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<table class="table">
+    <caption>
+
+    </caption>
+    <tr>
+        <th>Name</th>
+        <th>Registered email address</th>
+        <th>Permission</th>
+        <th>Api key</th>
+        <th>Created at</th>
+        <th>Invitation accepted</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+    {% for items in user_json['items'] %}
+
+      <tr>
+        <td>{{items['last_name']}}</td>
+        <td>{{items['email']}}</td>
+        <td>{{items['permission']}}</td>
+        <td>{{items['api_key']}}</td>
+        <td>{{items['created_at']}}</td>
+        <td>{{items['terms_of_service_accepted']}}</td>
+
+      </tr>
+    {% endfor %}
+</table>
+{% endblock %}

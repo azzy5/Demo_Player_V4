@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block body %}
+<table class="table">
+    <caption>
+
+    </caption>
+    <tr>
+        <th>Name</th>
+        <th>Duration (milli seconds)</th>
+        <th>Created at</th>
+        <th>Preview (Thumbnail)</th>
+        <th>Edit content</th>
+        <th></th>
+    </tr>
+    <tr>
+    {% for items in asset_json['items'] %}
+
+      <tr>
+        <td>{{items['name']}}</td>
+        <td>{{items['duration']}}</td>
+        <td>{{items['created_at']}}</td>
+        <td ><img src={{items['preview_image_url']}} height="200px" width="350px" ></td>
+        <td><a href="/get_assets/{{items['embed_code']}}" class="btn btn-danger pull-left">Edit</a></td>
+      </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Demo Player V4 Ooyala - Shaik Azhar Ahmed </title>
+    <link rel="stylesheet" type="text/css" href={{url_for('static', filename='style.css')}}/>
+</head>
+<body style="height: 100%; width: 100%; padding: 10px">
+<div style="text-align: center; border: 2px solid;">
+    <h1> Demo Player V4 Ooyala - Shaik Azhar Ahmed </h1>
+    <p> Email address: azzy049@outlook.com, Mobile : 8019436024,</p>
+    <a href="/welcome" target="iframe">
+        <button class="pulse" style=>Home</button>
+    </a>
+    <a href="/phaseone" target="iframe">
+        <button id="phase_one" class="pulse">Phase One</button>
+    </a>
+    <a href="/phasetwo" target="iframe">
+        <button id="phase_two" class="pulse">Phase Two</button>
+    </a>
+    <a href="/phasethree" target="iframe">
+        <button id="phase_three" class="pulse">Phase Three</button>
+    </a>
+</div>
+<div style="  position: fixed;height: 100%; width: 100%;">
+    <iframe name="iframe" style="height: 100%; width: 100%; display: block;" src="/welcome" scrolling="yes"/>
+</div>
+</body>
+</html>
